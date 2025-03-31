@@ -463,7 +463,7 @@ async def deploy_ubuntu(interaction: discord.Interaction):
 #@bot.tree.command(name="deploy-debian", description="Creates a new Instance with Debian 12")
 #@app_commands.describe(ram="The Vps Ram/8gb,24gb,32gb,")
 #async def deploy_ubuntu(interaction: discord.Interaction):
-#    await create_server_task_debian(interaction)
+#    await create_server_task_debian(interaction, ram)
 
 @bot.tree.command(name="regen-ssh", description="Generates a new SSH session for your instance")
 @app_commands.describe(container_name="The name/ssh-command of your Instance")
@@ -519,7 +519,7 @@ async def execute_command(command):
     stdout, stderr = await process.communicate()
     return stdout.decode(), stderr.decode()
 
-PUBLIC_IP = '138.68.79.95'
+PUBLIC_IP = '127.22.99.11'
 
 async def capture_output(process, keyword):
     while True:
