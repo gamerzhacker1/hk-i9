@@ -447,12 +447,7 @@ def generate_random_port():
     return random.randint(1025, 65535)
 
 async def create_server_task(interaction):
-    await interaction.response.send_message(embed=discord.Embed(description="🛠️ **Creating VPS with:**
-- 💾 **RAM:** 32g
-- 🔥 **Cores:** 12
-- 📦 **Container Name:** hk-i9
-
-⏳ **This may take a few seconds...**", color=0x00ff00))
+    await interaction.response.send_message(embed=discord.Embed(description="🛠️ **Creating Vps Your,Powered by root@Gh.dev.exe", color=0x00ff00))
     userid = str(interaction.user.id)
     if count_user_servers(userid) >= SERVER_LIMIT:
         await interaction.followup.send(embed=discord.Embed(description="```Error: Instance Limit-reached```", color=0xff0000))
@@ -488,12 +483,14 @@ async def create_server_task(interaction):
         subprocess.run(["docker", "rm", container_id])
 
 @bot.tree.command(name="deploy", description="Creates a new Instance with Ubuntu 22.04")
+@app_commands.describe(ram="The Vps Ram/8gb,24gb,32gb,")
 async def deploy_ubuntu(interaction: discord.Interaction):
-    await create_server_task(interaction)
+    await create_server_task(interaction, ram)
 
 #@bot.tree.command(name="deploy-debian", description="Creates a new Instance with Debian 12")
+#@app_commands.describe(ram="The Vps Ram/8gb,24gb,32gb,")
 #async def deploy_ubuntu(interaction: discord.Interaction):
-#    await create_server_task_debian(interaction)
+#    await create_server_task_debian(interaction, ram)
 
 @bot.tree.command(name="regen-ssh", description="Generates a new SSH session for your instance")
 @app_commands.describe(container_name="The name/ssh-command of your Instance")
@@ -549,7 +546,7 @@ async def execute_command(command):
     stdout, stderr = await process.communicate()
     return stdout.decode(), stderr.decode()
 
-PUBLIC_IP = '138.68.79.95'
+PUBLIC_IP = '127.22.99.11'
 
 async def capture_output(process, keyword):
     while True:
@@ -641,6 +638,8 @@ async def help_command(interaction: discord.Interaction):
     embed.add_field(name="/bal", value="Check Your Balance.", inline=False)
     embed.add_field(name="/renew", value="Renew The VPS.", inline=False)
     embed.add_field(name="/earncredit", value="earn the credit.", inline=False)
+    embed.add_field(name="/delvps", value="delete vps user.", inline=False)
+    embed.add_field(name="/node_admin", value="admin nodes.", inline=False)
     await interaction.response.send_message(embed=embed)
 
 
