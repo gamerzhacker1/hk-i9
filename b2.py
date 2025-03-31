@@ -16,7 +16,7 @@ import requests
 # Set Your Bot Token gay
 TOKEN = ''
 RAM_LIMIT = '2g' #Set Your Own Ram How Much You Want To Give Your Users
-SERVER_LIMIT = 20 #you can change it!
+SERVER_LIMIT = 90 #you can change it!
 database_file = 'database.txt'
 
 intents = discord.Intents.default()
@@ -457,6 +457,11 @@ async def create_server_task(interaction):
 
 @bot.tree.command(name="deploy", description="Creates a new Instance with Ubuntu 22.04")
 async def deploy_ubuntu(interaction: discord.Interaction):
+   await create_server_task(interaction)
+    userid = str(interaction.user.id)
+    if userid not in whitelist_ids:
+        await interaction.response.send_message(embed=discord.Embed(description="You do not have permission to use this command.", color=0xff0000))
+        return
     await create_server_task(interaction)
 
 #@bot.tree.command(name="deploy-debian", description="Creates a new Instance with Debian 12")
