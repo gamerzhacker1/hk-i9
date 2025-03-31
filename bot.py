@@ -484,13 +484,12 @@ async def create_server_task(interaction):
 
 @bot.tree.command(name="deploy", description="Creates a new Instance with Ubuntu 22.04")
 @app_commands.describe(ram="The Vps Ram/8gb,24gb,32gb,")
-async def deploy_ubuntu(interaction: discord.Interaction):
+async def deploy_ubuntu(interaction: discord.Interaction, ram):
     await create_server_task(interaction, ram)
 
 #@bot.tree.command(name="deploy-debian", description="Creates a new Instance with Debian 12")
-#@app_commands.describe(ram="The Vps Ram/8gb,24gb,32gb,")
 #async def deploy_ubuntu(interaction: discord.Interaction):
-#    await create_server_task_debian(interaction, ram)
+#    await create_server_task_debian(interaction)
 
 @bot.tree.command(name="regen-ssh", description="Generates a new SSH session for your instance")
 @app_commands.describe(container_name="The name/ssh-command of your Instance")
