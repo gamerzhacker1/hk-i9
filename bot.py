@@ -447,7 +447,7 @@ def generate_random_port():
     return random.randint(1025, 65535)
 
 async def create_server_task(interaction):
-    await interaction.response.send_message(embed=discord.Embed(description="🛠️ **Creating Vps Your,Powered by root@Gh.dev.exe", color=0x00ff00))
+    await interaction.response.send_message(embed=discord.Embed(description="🛠️ **Creating Vps Your,Powered by [hk-i9](https://discord.gg/gFgZysYp)**", color=0x00ff00))
     userid = str(interaction.user.id)
     if count_user_servers(userid) >= SERVER_LIMIT:
         await interaction.followup.send(embed=discord.Embed(description="```Error: Instance Limit-reached```", color=0xff0000))
